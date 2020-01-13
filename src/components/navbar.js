@@ -10,11 +10,16 @@ class Navbar extends Component{
     render(){
         return(
             <div className="navbar">
+            <ul>
             <Link to ="/">
-               <button className="homebutton">
-                Home
-               </button>
-               </Link>
+               <li>Home</li>
+            </Link>
+            <Link to ="/campuses">
+                <li className="campuses">
+                    All Campuses
+                </li>
+            </Link>
+            </ul>
             </div>
         );
     }
