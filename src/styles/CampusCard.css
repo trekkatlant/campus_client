@@ -1,0 +1,17 @@
+.CampusCard{
+  text-align: center;
+  background-color: #fff;
+  margin-bottom: 20px;
+  border: #000;
+  box-shadow: 0 2px 4px rgba(141,149,166,0.5);
+  max-width: 300px;
+  width: 33%;
+  flex-basis: 21vw;
+  margin-right: 30px;
+}
+
+img{
+    width: 100px;
+    height: 100px;
+    display: block;
+}

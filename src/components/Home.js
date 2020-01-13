@@ -8,15 +8,15 @@ class Home extends Component{
 
     render(){
         return(
-            <div>
+            <div className="navbar">
                 <h1 id="title">
                     Welcome to Campus Manager!
                 </h1>
                 <div class="choice">
-                    <Link to "#">
+                    <Link to>
                     <img src="#"></img>
                     </Link>
-                    <Link to "#">
+                    <Link t>
                     <img src="#"></img>
                     </Link>
                 </div>
