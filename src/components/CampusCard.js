@@ -1,4 +1,5 @@
 import React, {Component} from 'react'
+import '../styles/CampusCard.css'
 
 class CampusCard extends Component{
   constructor(props){

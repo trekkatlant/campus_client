@@ -1,0 +1,10 @@
+.AllCampuses{
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  align-items: center;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 1.4vh;
+  width: 85%;
+}
