@@ -1,11 +1,11 @@
 import React from 'react';
 import logo from './logo.svg';
 import './App.css';
-import AllCampuses from './components/allCampuses'
+import Campus from './components/singleCampus'
 
 class App extends React.Component {
   render() {
-    return (<AllCampuses/>)
+    return (<Campus/>)
   }
 }
 
