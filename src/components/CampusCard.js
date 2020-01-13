@@ -10,6 +10,8 @@ class CampusCard extends Component{
         <div className="CampusCard">
             <p>{this.props.name}</p>
             <img src={this.props.imageUrl}></img>
+            <button> Edit </button>
+            <button> Delete </button>
         </div>
       )
   }

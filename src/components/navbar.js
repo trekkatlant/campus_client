@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
-import {link} from 'react-router-dom';
-import {Navbar} from "react-bootstrap";
+import {Link} from 'react-router-dom';
+
+
 import "../styles/Navbar.css"
 class Navbar extends Component{
     constructor(){
@@ -9,15 +10,11 @@ class Navbar extends Component{
     render(){
         return(
             <div className="navbar">
-                <Navbar fluid collapseOnSelect>
-                    <Navbar.Header>
-                        <Navbar.Brand>
-                            <Link to="/">Scratch</Link>
-                        </Navbar.Brand>
-                        <Navbar.Toggle />
-                    </Navbar.Header>
-                </Navbar>
-
+            <Link to ="/">
+               <button className="homebutton">
+                Home
+               </button>
+               </Link>
             </div>
         );
     }
