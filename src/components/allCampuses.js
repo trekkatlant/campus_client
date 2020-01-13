@@ -13,15 +13,16 @@ class AllCampuses extends Component{
     return(
           <div>
             <h1> All Campuses </h1>
-          <div className="AllCampuses">
-              {campuses.length > 0 ?
-                campuses.map((campus,index) => {
-                  return <CampusCard name={campus.name} imageUrl={campus.imageUrl}/>
-                })
-                :
-                <p>No Campuses</p>
-              }
-           </div>
+            <button> Add New Campus </button>
+            <div className="AllCampuses">
+                {campuses.length > 0 ?
+                  campuses.map((campus,index) => {
+                    return <CampusCard name={campus.name} imageUrl={campus.imageUrl}/>
+                  })
+                  :
+                  <p>No Campuses</p>
+                }
+             </div>
            </div>
          )
   }

@@ -2,6 +2,11 @@ h1{
   text-align: center;
 }
 
+button{
+  display: block;
+  margin: 0 auto;
+}
+
 .AllCampuses{
   display: flex;
   justify-content: space-around;
