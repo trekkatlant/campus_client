@@ -1,0 +1,26 @@
+body{
+  text-align: center;
+}
+
+.studentcard{
+  text-align: center;
+  background-color: #fff;
+  margin-bottom: 20px;
+  border: #000;
+  box-shadow: 0 2px 4px rgba(141,149,166,0.5);
+  max-width: 300px;
+  width: 33%;
+  flex-basis: 21vw;
+  margin-right: 30px;
+}
+
+.students{
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  align-items: center;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 1.4vh;
+  width: 85%;
+}
