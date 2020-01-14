@@ -20,6 +20,7 @@ li{
     width: 120px;
 }
 
+
 li:hover:not(.active) {
     background-color: #111;
   }
