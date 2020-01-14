@@ -14,11 +14,17 @@ class Navbar extends Component{
             <Link to ="/">
                <li>Home</li>
             </Link>
+            <Link to="/students">
+                <li className="campuses">
+                    All students
+                </li>
+            </Link>
             <Link to ="/campuses">
                 <li className="campuses">
                     All Campuses
                 </li>
             </Link>
+            
             </ul>
             </div>
         );
