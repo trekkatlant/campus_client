@@ -1,20 +1,19 @@
-import React, {Component} from 'react'
-import '../styles/CampusCard.css'
+import React, {Component} from 'react';
+import {Link} from 'react-router-dom';
 
-class CampusCard extends Component{
-  constructor(props){
-    super(props)
-  }
-  render(){
-    return(
-        <div className="CampusCard">
-            <p>{this.props.name}</p>
-            <img src={this.props.imageUrl}></img>
-            <button> Edit </button>
-            <button> Delete </button>
-        </div>
-      )
-  }
+const CampusCard = props => {
+  const campus = props.campus;
+  return(
+    <div className="campusCard">
+      <div className="campic">
+        <img className="campusImage" src={campus.imageURL}></img>
+      </div>
+      <div className="campusDesc">
+        <p className="info">{`Name: ${campus.name}`}</p>
+        <p className="info">{`Campus id: ${campus.campusId}`}</p>
+      </div>
+    </div>
+  )
 }
 
-export default CampusCard
+export default CampusCard;
