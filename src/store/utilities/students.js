@@ -1,4 +1,4 @@
-import Axios from "axios";
+import axios from "axios";
 
 const FETCH_STUDENT = "FETCH_STUDENT";
 const GET_STUDENTS = "GET_STUDENT";

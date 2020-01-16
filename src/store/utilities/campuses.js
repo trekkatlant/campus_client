@@ -1,4 +1,5 @@
-const axios = require('axios');
+//const axios = require('axios');
+import axios from "axios";
 const FETCH_ALL_CAMPUSES = "FETCH_ALL_CAMPUSES";
 const ADD_CAMPUS = "ADD_CAMPUS";
 const REMOVE_CAMPUS = "REMOVE_CAMPUS";

@@ -9,8 +9,9 @@ import Student from './components/singleStudent';
 
 class App extends Component {
   render() {
+    //console.log(props)
     const AllCampusesComponent = () => <AllCampuses/>
-    const AllStudentsComponent = () => <AllStudents/>
+    const AllStudentsComponent = (props) => <AllStudents {...props}/>
     const HomePageComponent = () => <Home/>
     const SingleCampusComponent = (props) => <Campus {...props}/>
     const SingleStudentComponent = (props) => <Student {...props}/>
