@@ -1,14 +1,14 @@
+
+
 import { combineReducers, applyMiddleware, createStore } from "redux";
 import { createLogger } from "redux-logger";
 import thunkMiddleware from "redux-thunk";
 import { composeWithDevTools } from "redux-devtools-extension";
+import students from "./utilities/students";
+import campuses from "./utilities/campuses";
 
-// Reducer Functions;
-// import counter from "./utilities/counter";
-import allCampus from './utilities/campuses';
-import allStudents from './utilities/allStudents';
-const rootReducer = combineReducers({allCampus, allStudents});
-const logger = createLogger({ collapsed: true });
+const rootReducer = combineReducers({students,campuses});
+const logger = createLogger({collapsed: true});
 const middleware = composeWithDevTools(applyMiddleware(thunkMiddleware, logger));
 const store = createStore(rootReducer, middleware);
 
