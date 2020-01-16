@@ -1,3 +1,4 @@
+const axios = require('axios');
 const FETCH_CAMPUS = "FETCH_CAMPUS";
 const ADD_CAMPUS = "ADD_CAMPUS";
 const REMOVE_CAMPUS = "REMOVE_CAMPUS";
@@ -61,13 +62,20 @@ const editCampus = (campus) => {
     }
 }
 
-export const fetchCampusThunk = () => (dispatch) => {
-    dispatch(fetchCampus(initialState))
+export const fetchCampusThunk = () => async(dispatch) => {
+    try{
+        let info = await axios.get()
+        dispatch(fetchCampus(info.data));
+        console.log(info);
+    } catch(err){
+        console.log(err);
+    }
 }
 
-export const addCampusThunk = (campus) => (dispatch) => {
-    let resActObj = addCampus(campus);
-    dispatch(resActObj);
+export const addCampusThunk = (campus) => async(dispatch) => {
+    try{
+        let {info} = await 
+    }
 }
 
 export const removeCampusThunk = (id) => (dispatch) => {
