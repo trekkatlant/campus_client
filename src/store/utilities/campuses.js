@@ -74,23 +74,41 @@ export const fetchCampusThunk = () => async(dispatch) => {
 
 export const addCampusThunk = (campus) => async(dispatch) => {
     try{
-        let {info} = await 
+        let {info} = await axios.post();
+        let campus = await info;
+        dispatch(addCampus(campus));
+        console.log(info);
+    } catch(err){
+        console.log(err);
     }
 }
 
-export const removeCampusThunk = (id) => (dispatch) => {
-    let resActObj = removeCampus(id);
-    dispatch(resActObj);
+export const removeCampusThunk = (id) => async(dispatch) => {
+    try{
+        await axios.delete();
+        dispatch(removeCampus(id));
+    }catch(err){
+        console.log(err);
+    }
 }
 
-export const getCampusThunk = (id) => (dispatch) => {
-    let resActObj = getCampus(id);
-    dispatch(resActObj);
-}
+export const getCampusThunk = (id) => async(dispatch) => {
+    try{
+        let info = await axios.get()
+        dispatch(getCampus(info.data));
+        console.log(info);
+    } catch(err){
+        console.log(err);
+    }
 
-export const editCampusThunk = (campus) => (dispatch) => {
-    let resActObj = editCampus(campus);
-    dispatch(resActObj);
+export const editCampusThunk = (id, campus) => async(dispatch) => {
+    try{
+        let info = await axios.put();
+        dispatch(editCampus(campus));
+        console.log(info);
+    }catch(err){
+        console.log(err);
+    }
 }
 
 export default (state = dumCamp, action) => {
