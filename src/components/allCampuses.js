@@ -1,32 +1,99 @@
 import React, {Component} from 'react';
+import {Link} from 'react-router-dom';
 import CampusCard from './CampusCard';
 import '../styles/allCampuses.css';
 import Navbar from './navbar';
+import {fetchCampusThunk, addCampusThunk,removeCampusThunk, editCampusThunk} from '.../store/utilities/campuses';
+import { connect } from 'react-redux';
 class AllCampuses extends Component{
   constructor(props){
-    super(props)
+    super(props);
+    this.state = {
+      addCampus: false
+    }
   }
+
+  componentDidMount(){
+    this.props.fetchCampusThunk();
+  }
+
+  show = () => (
+    this.props.allCampuses.map(campus=> {
+      return(
+        <CampusCard campus={campus} removeCampus={this.props.removeCampus} handleChange={this.handleChange} handleSubmit={this.handleEdit} />
+      )
+    })
+  )
+
+handleChange = name => ({select}) => {
+  this.setState({
+    [name]: select.value
+  });
+}
+
+toggleEdit = () => {
+  this.setState({
+    addCampus: !this.state.addCampus
+  });
+}
+
+handleAddNew = (event) => {
+  event.preventDefault();
+  const campObj = {
+    "name": this.state.name,
+    "imageUrl": this.state.imageUrl,
+    "description": this.state.description,
+    "address": this.state.address,
+  }
+  console.log(campObj);
+  this.props.addCampus(campObj);
+  this.toggleEdit();
+}
+
+handleEdit = (id) => {
+  const campObj = {
+    "id": id,
+    "name": this.state.name,
+    "imageUrl": this.state.imageUrl,
+    "description": this.state.description,
+    "address": this.state.address,
+  }
+  this.props.editCampus(id,campObj);
+  console.log(campObj);
+}
+
   render(){
-    let campuses = [{name:"Harvard",imageUrl:"https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ff.hypotheses.org%2Fwp-content%2Fblogs.dir%2F1204%2Ffiles%2F2013%2F04%2Fhunter-college-logo.png&f=1&nofb=1"}
-                    ,{name:"Hunter",imageUrl:"https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ff.hypotheses.org%2Fwp-content%2Fblogs.dir%2F1204%2Ffiles%2F2013%2F04%2Fhunter-college-logo.png&f=1&nofb=1"}
-                    ,{name:"Baruch",imageUrl:"https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ff.hypotheses.org%2Fwp-content%2Fblogs.dir%2F1204%2Ffiles%2F2013%2F04%2Fhunter-college-logo.png&f=1&nofb=1"}];
     return(
-          <div>
-            <Navbar />
-            <h1> All Campuses </h1>
-            <button> Add New Campus </button>
-            <div className="AllCampuses">
-                {campuses.length > 0 ?
-                  campuses.map((campus,index) => {
-                    return <CampusCard name={campus.name} imageUrl={campus.imageUrl}/>
-                  })
-                  :
-                  <p>No Campuses</p>
-                }
-             </div>
-           </div>
-         )
+      <div>
+        <div className="head">
+          <Navbar />
+          <h1> All Campuses </h1>
+        </div>
+        <button> Add New Campus </button>
+        <div className="AllCampuses">
+          {this.show()}
+        </div>
+      </div>
+    ) 
+  }
+}
+   
+const mapState = (state) => {
+  return{
+    AllCampuses: state.AllCampuses
+  }
+}
+const mapDispatch = (dispatch) => {
+  return {
+    fetchCampus: () => dispatch(fetchCampusThunk()),
+    addCampus: (campus) => dispatch(addCampusThunk()),
+    removeCampus: (id) => dispatch(removeCampusThunk()),
+    editCampus: (campus) => dispatch(editCampusThunk())
   }
 }
 
-export default AllCampuses
+        
+
+
+
+export default connect(mapState, mapDispatch)(AllCampuses);
