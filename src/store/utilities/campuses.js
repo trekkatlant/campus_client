@@ -78,6 +78,7 @@ export const getCampusThunk = (id) => async(dispatch) => {
     } catch(err){
         console.log(err);
     }
+}
 
 export const editCampusThunk = (id, campus) => async(dispatch) => {
     try{

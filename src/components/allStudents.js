@@ -5,11 +5,16 @@ import Navbar from './navbar';
 class AllStudents extends Component{
   constructor(props){
     super(props)
+    this.state = {
+      addStudent: false
+    }
   }
+  componentDidMount() {
+    this.props.fethStudent();
+    this.props.fetchAllCampuses();
+  }
+
   render(){
-    let students = [{name:"Jack",campus:"Hunter",imageUrl:'https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ff.hypotheses.org%2Fwp-content%2Fblogs.dir%2F1204%2Ffiles%2F2013%2F04%2Fhunter-college-logo.png&f=1&nofb=1'},
-                    {name:"John",campus:"Baruch",imageUrl:'https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ff.hypotheses.org%2Fwp-content%2Fblogs.dir%2F1204%2Ffiles%2F2013%2F04%2Fhunter-college-logo.png&f=1&nofb=1'},
-                    {name:"Adam",campus:"Hunter",imageUrl:'https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ff.hypotheses.org%2Fwp-content%2Fblogs.dir%2F1204%2Ffiles%2F2013%2F04%2Fhunter-college-logo.png&f=1&nofb=1'}]
     return(
       <div>
         <Navbar />

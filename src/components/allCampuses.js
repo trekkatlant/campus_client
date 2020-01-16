@@ -3,7 +3,7 @@ import {Link} from 'react-router-dom';
 import CampusCard from './CampusCard';
 import '../styles/allCampuses.css';
 import Navbar from './navbar';
-import {fetchCampusThunk, addCampusThunk,removeCampusThunk, editCampusThunk} from '../store/utilities/campuses';
+import {fetchAllCampusesThunk, addCampusThunk,removeCampusThunk, editCampusThunk} from '../store/utilities/campuses';
 import { connect } from 'react-redux';
 class AllCampuses extends Component{
   constructor(props){
@@ -14,7 +14,7 @@ class AllCampuses extends Component{
   }
 
   componentDidMount(){
-    this.props.fetchCampusThunk();
+    this.props.fetchAllCampusesThunk();
   }
 
   show = () => (
@@ -85,10 +85,10 @@ const mapState = (state) => {
 }
 const mapDispatch = (dispatch) => {
   return {
-    fetchCampus: () => dispatch(fetchCampusThunk()),
-    addCampus: (campus) => dispatch(addCampusThunk()),
-    removeCampus: (id) => dispatch(removeCampusThunk()),
-    editCampus: (campus) => dispatch(editCampusThunk())
+    fetchAllCampuses: () => dispatch(fetchAllCampusesThunk()),
+    addCampus: (campus) => dispatch(addCampusThunk(campus)),
+    removeCampus: (id) => dispatch(removeCampusThunk(id)),
+    editCampus: (id, campus) => dispatch(editCampusThunk(id, campus))
   }
 }
 
