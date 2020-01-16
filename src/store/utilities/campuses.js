@@ -64,7 +64,7 @@ const editCampus = (campus) => {
 
 export const fetchCampusThunk = () => async(dispatch) => {
     try{
-        let info = await axios.get()
+        let info = await axios.get("https://campuss.herokuapp.com/api/campuses/")
         dispatch(fetchCampus(info.data));
         console.log(info);
     } catch(err){
