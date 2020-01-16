@@ -12,17 +12,17 @@ class App extends Component {
     const AllCampusesComponent = () => <AllCampuses/>
     const AllStudentsComponent = () => <AllStudents/>
     const HomePageComponent = () => <Home/>
-    const SinglePageComponent = () => <Campus/>
-    const SingleStudentComponent = () => <Student/>
+    const SingleCampusComponent = (props) => <Campus {...props}/>
+    const SingleStudentComponent = (props) => <Student {...props}/>
 
     return (
     <Router>
       <Switch>
         <Route exact path="/" render= {HomePageComponent} />
         <Route exact path="/campuses" render ={AllCampusesComponent}/>
-        <Route exact path="/campus" render={SinglePageComponent}/>
         <Route exact path="/students" render={AllStudentsComponent}/>
-        <Route exact path ="/student" render={SingleStudentComponent}/>
+        <Route exact path="campuses/:id" render={SingleCampusComponent}/>
+        <Route exact path="students/:id" render={SingleStudentComponent}/>
       </Switch>
     </Router>
     );
