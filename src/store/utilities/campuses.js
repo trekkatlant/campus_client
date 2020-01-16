@@ -8,17 +8,22 @@ let dumCamp=[{
     id:1,
     name: "Harvard",
     imageUrl: "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ff.hypotheses.org%2Fwp-content%2Fblogs.dir%2F1204%2Ffiles%2F2013%2F04%2Fhunter-college-logo.png&f=1&nofb=1",
-
+    description: "blah blah blah",
+    address: "123 4th Ave",
 },
 {
     id:2,
     name:"hunter",
     imageUrl:"https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ff.hypotheses.org%2Fwp-content%2Fblogs.dir%2F1204%2Ffiles%2F2013%2F04%2Fhunter-college-logo.png&f=1&nofb=1",
+    description: "blah blah blah",
+    address: "123 4th Ave",
 },
 {
     id:3,
     name:"Baruch",
     imageUrl:"https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ff.hypotheses.org%2Fwp-content%2Fblogs.dir%2F1204%2Ffiles%2F2013%2F04%2Fhunter-college-logo.png&f=1&nofb=1",
+    description: "blah blah blah",
+    address: "123 4th Ave",
 }];
 
 const fetchCampus = (campus) => {
