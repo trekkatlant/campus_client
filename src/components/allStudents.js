@@ -12,7 +12,21 @@ class AllStudents extends Component{
   componentDidMount() {
     this.props.fethStudent();
     this.props.fetchAllCampuses();
-  }
+  };
+  
+  show = () => (
+    this.props.students.map(campus=> {
+      return(
+        <StudentCard 
+          firstName={this.firstName}
+          lastName={this.lastName}
+          campus={this.campus}
+          removeCampus={this.props.removeCampus} 
+          handleChange={this.handleChange} 
+          handleSubmit={this.handleEdit} />
+      )
+    })
+  )
 
   render(){
     return(

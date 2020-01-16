@@ -4,31 +4,6 @@ const ADD_STUDENT = "ADD_STUDENT";
 const REMOVE_STUDENT = "REMOVE_STUDENT";
 const EDIT_STUDENT = "EDIT_STUDENT";
 
-let dumStu = [{
-    id:1,
-    name: "Jack",
-    campus: "Hunter",
-    imageUrl: "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ff.hypotheses.org%2Fwp-content%2Fblogs.dir%2F1204%2Ffiles%2F2013%2F04%2Fhunter-college-logo.png&f=1&nofb=1",
-    email: "jack@email.com",
-    gpa: 3.2,
-},
-{
-    id:2,
-    name: "John",
-    campus: "Baruch",
-    imageUrl: "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ff.hypotheses.org%2Fwp-content%2Fblogs.dir%2F1204%2Ffiles%2F2013%2F04%2Fhunter-college-logo.png&f=1&nofb=1",
-    email: "john@email.com",
-    gpa: 4.0,
-},
-{
-    id:3,
-    name: "Adam",
-    campus: "Hunter",
-    imageUrl: "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ff.hypotheses.org%2Fwp-content%2Fblogs.dir%2F1204%2Ffiles%2F2013%2F04%2Fhunter-college-logo.png&f=1&nofb=1",
-    email: "adam@email.com",
-    gpa: 1.5,
-}];
-
 const fetchStudent = (student) => {
     return{
         type: FETCH_STUDENT,

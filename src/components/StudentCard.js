@@ -8,7 +8,7 @@ class StudentCard extends Component{
     return (
           <div className="studentcard">
             <img src={this.props.imageUrl}></img>
-            <p>{this.props.name}</p>
+            <p>{this.props.firstName} {" "} {this.props.lastName}</p>
             <p>{this.props.campus}</p>
           </div>
     )
