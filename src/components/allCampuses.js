@@ -3,7 +3,7 @@ import {Link} from 'react-router-dom';
 import CampusCard from './CampusCard';
 import '../styles/allCampuses.css';
 import Navbar from './navbar';
-import {fetchCampusThunk, addCampusThunk,removeCampusThunk, editCampusThunk} from '.../store/utilities/campuses';
+import {fetchCampusThunk, addCampusThunk,removeCampusThunk, editCampusThunk} from '../store/utilities/campuses';
 import { connect } from 'react-redux';
 class AllCampuses extends Component{
   constructor(props){
@@ -58,7 +58,7 @@ handleEdit = (id) => {
     "description": this.state.description,
     "address": this.state.address,
   }
-  this.props.editCampus(id,campObj);
+  this.props.editCampus(id, campObj);
   console.log(campObj);
 }
 
