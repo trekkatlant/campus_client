@@ -1,35 +1,13 @@
 const axios = require('axios');
-const FETCH_CAMPUS = "FETCH_CAMPUS";
+const FETCH_ALL_CAMPUSES = "FETCH_ALL_CAMPUSES";
 const ADD_CAMPUS = "ADD_CAMPUS";
 const REMOVE_CAMPUS = "REMOVE_CAMPUS";
-const GET_CAMPUSES = "GET_CAMPUSES";
+const GET_CAMPUS = "GET_CAMPUS";
 const EDIT_CAMPUS = "EDIT_CAMPUS";
 
-let dumCamp=[{
-    id:1,
-    name: "Harvard",
-    imageUrl: "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ff.hypotheses.org%2Fwp-content%2Fblogs.dir%2F1204%2Ffiles%2F2013%2F04%2Fhunter-college-logo.png&f=1&nofb=1",
-    description: "blah blah blah",
-    address: "123 4th Ave",
-},
-{
-    id:2,
-    name:"hunter",
-    imageUrl:"https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ff.hypotheses.org%2Fwp-content%2Fblogs.dir%2F1204%2Ffiles%2F2013%2F04%2Fhunter-college-logo.png&f=1&nofb=1",
-    description: "blah blah blah",
-    address: "123 4th Ave",
-},
-{
-    id:3,
-    name:"Baruch",
-    imageUrl:"https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ff.hypotheses.org%2Fwp-content%2Fblogs.dir%2F1204%2Ffiles%2F2013%2F04%2Fhunter-college-logo.png&f=1&nofb=1",
-    description: "blah blah blah",
-    address: "123 4th Ave",
-}];
-
-const fetchCampus = (campus) => {
+const fetchAllCampuses = (campus) => {
     return {
-        type: FETCH_CAMPUS,
+        type: FETCH_ALL_CAMPUSES,
         payload: campus
     }
 }
@@ -50,7 +28,7 @@ const removeCampus = (id) => {
 
 const getCampus = (id) => {
     return {
-        type: GET_CAMPUSES,
+        type: GET_CAMPUS,
         payload: id
     }
 }
@@ -58,14 +36,14 @@ const getCampus = (id) => {
 const editCampus = (campus) => {
     return {
         type: EDIT_CAMPUS,
-        payload: id
+        payload: campus
     }
 }
 
-export const fetchCampusThunk = () => async(dispatch) => {
+export const fetchAllCampusesThunk = () => async(dispatch) => {
     try{
-        let info = await axios.get("https://campuss.herokuapp.com/api/campuses/")
-        dispatch(fetchCampus(info.data));
+        let info = await axios.get("https://campuss.herokuapp.com/api/campuses")
+        dispatch(fetchAllCampuses(info.data));
         console.log(info);
     } catch(err){
         console.log(err);
@@ -74,7 +52,7 @@ export const fetchCampusThunk = () => async(dispatch) => {
 
 export const addCampusThunk = (campus) => async(dispatch) => {
     try{
-        let {info} = await axios.post();
+        let {info} = await axios.post("https://campuss.herokuapp.com/api/campuses", campus);
         let campus = await info;
         dispatch(addCampus(campus));
         console.log(info);
@@ -85,7 +63,7 @@ export const addCampusThunk = (campus) => async(dispatch) => {
 
 export const removeCampusThunk = (id) => async(dispatch) => {
     try{
-        await axios.delete();
+        await axios.delete("https://campuss.herokuapp.com/api/campuses/" + id);
         dispatch(removeCampus(id));
     }catch(err){
         console.log(err);
@@ -94,7 +72,7 @@ export const removeCampusThunk = (id) => async(dispatch) => {
 
 export const getCampusThunk = (id) => async(dispatch) => {
     try{
-        let info = await axios.get()
+        let info = await axios.get("https://campuss.herokuapp.com/api/campuses/" + id)
         dispatch(getCampus(info.data));
         console.log(info);
     } catch(err){
@@ -103,7 +81,7 @@ export const getCampusThunk = (id) => async(dispatch) => {
 
 export const editCampusThunk = (id, campus) => async(dispatch) => {
     try{
-        let info = await axios.put();
+        let info = await axios.put("https://campuss.herokuapp.com/api/campuses/" + id, campus);
         dispatch(editCampus(campus));
         console.log(info);
     }catch(err){
@@ -111,15 +89,15 @@ export const editCampusThunk = (id, campus) => async(dispatch) => {
     }
 }
 
-export default (state = dumCamp, action) => {
+export default (state = [], action) => {
     switch (action.type){
-        case FETCH_CAMPUS:
+        case FETCH_ALL_CAMPUSES:
             return action.payload;
         case ADD_CAMPUS:
             return [...state, action.payload];
         case REMOVE_CAMPUS:
             return state.filter(campus => campus.id !== action.payload);
-        case GET_CAMPUSES:
+        case GET_CAMPUS:
             return state.filter(campus => campus.id === parseInt(action.payload));
         case EDIT_CAMPUS:
             return [...state.filter(campus => campus.id !== action.payload.id), action.payload];
