@@ -33,9 +33,10 @@ const getCampus = (id) => {
     }
 }
 
-const editCampus = (campus) => {
+const editCampus = (id, campus) => {
     return {
         type: EDIT_CAMPUS,
+        id: id,
         payload: campus
     }
 }
@@ -83,7 +84,7 @@ export const getCampusThunk = (id) => async(dispatch) => {
 export const editCampusThunk = (id, campus) => async(dispatch) => {
     try{
         let info = await axios.put("https://campuss.herokuapp.com/api/campuses/" + id, campus);
-        dispatch(editCampus(campus));
+        dispatch(editCampus(id, campus));
         console.log(info);
     }catch(err){
         console.log(err);

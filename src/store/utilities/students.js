@@ -1,3 +1,5 @@
+import Axios from "axios";
+
 const FETCH_STUDENT = "FETCH_STUDENT";
 const GET_STUDENTS = "GET_STUDENT";
 const ADD_STUDENT = "ADD_STUDENT";
@@ -40,13 +42,24 @@ const editStudent = (id,arr) => {
     }
 }
 
-export const fetchStudentThunk = () => (dispatch) => {
-    dispatch(fetchStudent(dumStu));
+export const fetchStudentThunk = () => async(dispatch) => {
+    try {
+        let info = await axios.get("https://campuss.herokuapp.com/api/students")
+        dispatch(fetchStudent(info.data));
+    } catch(err) {
+        console.log(err);
+    }
+    
 }
 
-export const getStudentThunk = (id) => (dispatch) => {
-    let resActObj = getStudent(id);
-    dispatch(resActObj);
+export const getStudentThunk = (id) => async(dispatch) => {
+    try {
+        let info = await axios.get("https://campuss.herokuapp.com/api/students/" + id);
+        dispatch(getStudent(info.data));
+    } catch(err) {
+        console.log(err);
+    }
+    
 }
 
 export const addStudentThunk = (student) => (dispatch) => {
@@ -59,12 +72,17 @@ export const removeStudentThunk = (id) => (dispatch) => {
     dispatch(resActObj);
 }
 
-export const editStudentThunk = (student) => (dispatch) => {
-    let resActObj = editStudent(student);
-    dispatch(resActObj);
+export const editStudentThunk = (id, student) => async(dispatch) => {
+    try {
+        let info = await axios.put("https://campuss.herokuapp.com/api/students" + id);
+        dispatch(editStudent(id, student));
+    } catch(err) {
+        console.log(err);
+    }
+    
 }
 
-export default (state = dumStu, action) => {
+export default (state = [], action) => {
     switch(action.type){
         case FETCH_STUDENT:
             return action.payload;
